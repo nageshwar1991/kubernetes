@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: frontend
+  labels:
+    app: mywebsite
+    tier: frontend
+spec:
+  replicas: 4
+  template:
+    metadata:
+      name: tomcatpod
+      labels:
+        app: myapp
+    spec:
+      containers:
+        - name: tomcat
+          image: tomcat
+  selector:
+    matchLabels:
+      app: myap
